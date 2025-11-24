@@ -1,9 +1,9 @@
 from application.remove_plant import remove_plant
 
-def remove_handler(plants):
+def remove_handler(plants, path):
     try:
-        index = int(input("Введите номер растения"))
-        return remove_plant(plants, index - 1)
+        index = int(input("Введите номер растения\n"))
+        return remove_plant(plants, path, index - 1)
     except ValueError:
         print("Введите число!")
 

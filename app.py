@@ -1,4 +1,4 @@
 from presentation.cli import start_cli
 
-
-start_cli()
+if __name__ == "__main__":
+    start_cli()
