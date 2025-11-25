@@ -1,9 +1,12 @@
 from infrastracture.storage import init_path, init_storage, get_data
-from presentation.config import cmd_add, cmd_remove, cmd_plant, cmd_out
+from presentation.config import cmd_add, cmd_remove, cmd_plant, cmd_out, cmd_watering
 from presentation.handlers.add_handler import add_handler
 from presentation.handlers.remove_handler import remove_handler
-from presentation.handlers.get_handler import get_handler
+from presentation.handlers.print_handler import print_handler
 from presentation.handlers.out_handler import out_handler
+from presentation.handlers.watering_handler import watering_handler
+from presentation.handlers.print_watering_plants import print_watering_plants
+from domain.watering_service import check_watering
 
 def start_cli():
     print("Planty!")
@@ -14,9 +17,14 @@ def start_cli():
     commands = {
         cmd_add: add_handler,
         cmd_remove: remove_handler,
-        cmd_plant: get_handler,
-        cmd_out: out_handler
+        cmd_plant: print_handler,
+        cmd_out: out_handler,
+        cmd_watering: watering_handler
     }
+
+    check_plants = check_watering(plants)
+    print("Проверяем, кого нужно полить...")
+    print_watering_plants(check_plants)
 
     flag = True
 
